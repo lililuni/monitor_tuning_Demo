@@ -3,15 +3,15 @@ Java性能监控与调优Demo，主要学习各种JDK监控工具以及jvm调优
 
 # 二. Btrace监控工具
 参考链接：http://calvin1978.blogcn.com/articles/btrace1.html
-## 1. Btrace 入门测试
+## 2.1. Btrace 入门测试
 1. 演示代码为：BtraceController.arg1(@RequestParam("name")String name)
 2. Btrace脚本为：PrintArgSimple
 3. 启动脚本命令为：btrace 23120 PrintArgSimple.java ，也可以用JVisualVM启动 
 
 ---
 
-## 2. Btrace 使用详解
-### 2.1 拦截方法
+## 2.2. Btrace 使用详解
+### 2.2.1 拦截方法
 1. 拦截构造函数
 	- BtraceController.constructor(User user)
 	- PrintConstructor脚本
@@ -41,7 +41,7 @@ Java性能监控与调优Demo，主要学习各种JDK监控工具以及jvm调优
 
 ---
 	
-### 2.3 拦截时机
+### 2.2.2 拦截时机
 1. 在方法入口处拦截：Kind.ENTRY （默认）
 	-   演示代码为：BtraceController.arg1(@RequestParam("name")String name)
 	- Btrace脚本为：PrintArgSimple
@@ -55,7 +55,7 @@ Java性能监控与调优Demo，主要学习各种JDK监控工具以及jvm调优
 	-   演示代码为：BtraceController.exception()
 	- 脚本：PrintLine，其中，location=@Location(value=Kind.LINE, line=-1) 表示方法中打印所有执行行代码，line=36 表示第36行是否执行
 	
-## 3. 注意事项
+## 2.3. 注意事项
 1. btrace默认只能本地运行
 2. 生产环境下可以使用btrace，但是被btrace注入的代码不会还原，当然，jvm重启是会还原的。
 
